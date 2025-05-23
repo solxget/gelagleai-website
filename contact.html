@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - ገላግሌAI</title>
+    <title>Contact Us - ገላግሌAI</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,6 +37,9 @@
             color: var(--text-color);
             background-color: var(--light-color);
             overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
         
         .container {
@@ -113,64 +116,94 @@
             color: var(--light-text);
         }
         
-        /* Privacy Policy */
-        .privacy-policy {
+        /* Contact Form */
+        .contact-section {
             padding: 80px 0 30px;
+            flex: 1;
         }
         
-        .policy-content {
+        .contact-content {
             background-color: #fff;
             border-radius: 10px;
             padding: 30px;
             box-shadow: var(--box-shadow);
+            max-width: 600px;
+            margin: 0 auto;
         }
         
-        .policy-content h1 {
+        .contact-content h1 {
             font-size: 1.8rem;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
             color: var(--primary-color);
         }
         
-        .last-updated {
-            color: #777;
+        .contact-form .form-group {
             margin-bottom: 20px;
+        }
+        
+        .contact-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
             font-size: 0.9rem;
         }
         
-        .policy-content h2 {
-            font-size: 1.3rem;
-            margin: 25px 0 10px;
-            color: var(--dark-color);
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
         }
         
-        .policy-content p {
-            margin-bottom: 10px;
-            font-size: 0.95rem;
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
         }
         
-        .policy-content ul, .policy-content ol {
-            margin: 10px 0 10px 20px;
+        .contact-form button {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            border: none;
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
         }
         
-        .policy-content ul li, .policy-content ol li {
-            margin-bottom: 5px;
-            font-size: 0.95rem;
+        .contact-form button:hover {
+            background-color: #00a383;
         }
         
-        .policy-content ul li {
-            list-style-type: disc;
+        .form-message {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: var(--border-radius);
+            display: none;
         }
         
-        .policy-content ol li {
-            list-style-type: decimal;
+        .form-message.success {
+            background-color: rgba(0, 184, 148, 0.1);
+            color: var(--primary-color);
+            display: block;
         }
         
+        .form-message.error {
+            background-color: rgba(255, 0, 0, 0.1);
+            color: #e74c3c;
+            display: block;
+        }
+        
+        /* Footer */
         footer {
             background-color: var(--dark-color);
             color: #fff;
             padding: 10px 0;
             font-size: 0.8rem;
-            margin-top: 30px;
+            margin-top: auto;
         }
         
         .footer-content {
@@ -248,8 +281,8 @@
                 <ul>
                     <li><a href="index.html">መነሻ</a></li>
                     <li><a href="index.html#features">ባህሪያት</a></li>
-                    <li><a href="privacy-policy.html" class="active">ግላዊነት</a></li>
-                    <li><a href="contact.html">አግኙን</a></li>
+                    <li><a href="privacy-policy.html">ግላዊነት</a></li>
+                    <li><a href="contact.html" class="active">አግኙን</a></li>
                 </ul>
             </nav>
             <div class="menu-toggle">
@@ -258,68 +291,33 @@
         </div>
     </header>
 
-    <section class="privacy-policy">
+    <section class="contact-section">
         <div class="container">
-            <div class="policy-content">
-                <h1>የግላዊነት ፖሊሲ ለ ገላግሌ AI</h1>
-                <p class="last-updated"><em>መጨረሻ የተሻሻለው: ግንቦት 12, 2025</em></p>
-
-                <h2>መግቢያ</h2>
-                <p>ገላግሌ AI ን ስለመረጡ እናመሰግናለን። የእርስዎን ግላዊነት ለመጠበቅ እና መተግበሪያችንን ሲጠቀሙ አዎንታዊ ተሞክሮ እንዲኖርዎት ቁርጠኞች ነን። ይህ የግላዊነት ፖሊሲ ስለ መረጃዎ እና እንዴት እንደምናስተናግደው ያለንን አሰራር ያብራራል።</p>
-
-                <h2>ምንም ዳታ የማይሰበስብ ፖሊሲ</h2>
-                <p><strong>ገላግሌ AI ምንም የተጠቃሚ ዳታ አይሰበስብም ወይም አያከማችም።</strong> መተግበሪያችንን ግላዊነትን መሰረታዊ መርህ አድርገን ነው የዘጋጀነው።</p>
-                <ul>
-                    <li>የግል መረጃ አንሰበስብም</li>
-                    <li>የእርስዎን አጠቃቀም ወይም ባህሪ አንከታተልም</li>
-                    <li>የእርስዎን የውይይት ታሪክ ወይም ጥያቄዎች አናከማችም</li>
-                    <li>የተጠቃሚ እንቅስቃሴን ለመቆጣጠር የትንተና መሳሪያዎችን አንጠቀምም</li>
-                    <li>የተጠቃሚ መገለጫዎችን ወይም መለያዎችን አንፈጥርም</li>
-                </ul>
-
-                <h2>መተግበሪያው ያለ ዳታ መሰብሰብ እንዴት እንደሚሰራ</h2>
-                <p>ገላግሌ AI ን ሲጠቀሙ፡</p>
-                <ol>
-                    <li>Your questions are sent directly to our API service</li>
-                    <li>The API processes your question and returns an answer</li>
-                    <li>Both your question and the answer are displayed only on your device</li>
-                    <li>When you close the app or start a new session, previous conversations are not saved</li>
-                </ol>
-
-                <h2>Third-Party Services</h2>
-                <p>Our application uses third-party services for AI functionality. Your queries are processed through this service but are not stored or retained. The connection to this service is made directly from your device, and we do not maintain any logs or records of these interactions.</p>
-
-                <h2>Device Permissions</h2>
-                <p>Our app requires minimal permissions to function:</p>
-                <ul>
-                    <li>Internet access: Required to send queries to our AI service</li>
-                </ul>
-                <p>We do not request access to:</p>
-                <ul>
-                    <li>Your contacts</li>
-                    <li>Your location</li>
-                    <li>Your photos or files</li>
-                    <li>Your microphone or camera</li>
-                    <li>Any other sensitive device features</li>
-                </ul>
-
-                <h2>Children's Privacy</h2>
-                <p>Our services are not intended for children under the age of 13, and we do not knowingly collect or solicit data from children.</p>
-
-                <h2>Changes to This Privacy Policy</h2>
-                <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.</p>
-
-                <h2>Contact Us</h2>
-                <p>If you have any questions about this Privacy Policy or our data practices, please contact us at:</p>
-                <p>Email: privacy@gelagleai.com</p>
-
-                <h2>Your Rights</h2>
-                <p>Even though we don't collect your data, you have rights regarding your privacy. You can:</p>
-                <ul>
-                    <li>Contact us with questions about our privacy practices</li>
-                    <li>Report any concerns about our privacy policy or practices</li>
-                    <li>Request information about how your queries are processed</li>
-                </ul>
+            <div class="contact-content">
+                <h1>አግኙን</h1>
+                <p>ጥያቄ ካለዎት ወይም አስተያየት መስጠት ከፈለጉ፣ እባክዎ ከዚህ በታች ያለውን ቅጽ ይሙሉ።</p>
+                
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">ስም</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">ኢሜይል</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">ርዕስ</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">መልዕክት</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit">ላክ</button>
+                </form>
+                
+                <div id="formMessage" class="form-message"></div>
             </div>
         </div>
     </section>
@@ -327,7 +325,7 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2025 ገላግሌAI. መብቱ በህግ የተጠበቀ ነው።</p>
+                <p>&copy; 2025 ገላግሌAI. መብቱ በህግ የተጠበቀ ነው። <a href="privacy-policy.html">የግላዊነት ፖሊሲ</a></p>
                 <div class="social-links">
                     <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                     <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
@@ -340,20 +338,7 @@
         </div>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu toggle
-            const menuToggle = document.querySelector('.menu-toggle');
-            const nav = document.querySelector('nav');
-            
-            if (menuToggle) {
-                menuToggle.addEventListener('click', function() {
-                    nav.classList.toggle('active');
-                    menuToggle.querySelector('i').classList.toggle('fa-bars');
-                    menuToggle.querySelector('i').classList.toggle('fa-times');
-                });
-            }
-        });
-    </script>
+    <script src="js/script.js"></script>
+    <script src="js/contact.js"></script>
 </body>
 </html>
