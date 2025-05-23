@@ -20,6 +20,9 @@
             --border-radius: 8px;
             --box-shadow: 0 10px 30px rgba(0, 184, 148, 0.1);
             --transition: all 0.3s ease;
+            --gradient-start: #009245;
+            --gradient-middle: #FCEE21;
+            --gradient-end: #ED1C24;
         }
         
         * {
@@ -62,8 +65,7 @@
         
         /* Header */
         header {
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-middle), var(--gradient-end));
             box-shadow: var(--box-shadow);
             padding: 10px 0;
         }
@@ -77,11 +79,12 @@
         .logo h1 {
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--dark-color);
+            color: var(--light-text);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
         }
         
         .logo span {
-            color: var(--primary-color);
+            color: var(--light-text);
         }
         
         nav ul {
@@ -93,7 +96,7 @@
         }
         
         nav ul li a {
-            color: var(--dark-color);
+            color: var(--light-text);
             font-weight: 500;
             padding: 5px 10px;
             border-radius: var(--border-radius);
@@ -101,14 +104,15 @@
         }
         
         nav ul li a:hover {
-            color: var(--primary-color);
-            background-color: rgba(0, 184, 148, 0.1);
+            color: var(--light-text);
+            background-color: rgba(255, 255, 255, 0.2);
         }
         
         .menu-toggle {
             display: none;
             font-size: 1.5rem;
             cursor: pointer;
+            color: var(--light-text);
         }
         
         /* Main Content */
@@ -139,8 +143,8 @@
         
         .ai-badge {
             display: inline-block;
-            background-color: rgba(0, 184, 148, 0.1);
-            color: var(--primary-color);
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-middle), var(--gradient-end));
+            color: var(--light-text);
             padding: 5px 12px;
             border-radius: 30px;
             font-size: 0.8rem;
@@ -155,7 +159,12 @@
         }
         
         .hero-content .highlight {
-            color: var(--primary-color);
+            color: var(--gradient-start);
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-middle), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
         }
         
         .hero-content p {
@@ -198,8 +207,8 @@
         
         .feature-icon {
             font-size: 1.2rem;
-            color: var(--primary-color);
-            background-color: rgba(0, 184, 148, 0.1);
+            color: var(--light-text);
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-middle), var(--gradient-end));
             width: 40px;
             height: 40px;
             display: flex;
@@ -222,7 +231,7 @@
         
         /* Download */
         .download {
-            background: linear-gradient(135deg, #00b894 0%, #00a383 100%);
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-middle), var(--gradient-end));
             color: var(--light-text);
             text-align: center;
             padding: 15px 0;
@@ -277,7 +286,7 @@
         
         /* Footer */
         footer {
-            background-color: var(--dark-color);
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-middle), var(--gradient-end));
             color: #fff;
             padding: 10px 0;
             font-size: 0.8rem;
@@ -301,7 +310,7 @@
         }
         
         .social-links a:hover {
-            color: var(--primary-color);
+            color: rgba(255, 255, 255, 0.7);
             transform: translateY(-3px);
         }
         
