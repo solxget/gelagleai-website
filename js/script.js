@@ -1,83 +1,99 @@
-// Mobile Menu Toggle
 document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu toggle
     const menuToggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('nav');
     
-    if (menuToggle && nav) {
+    if (menuToggle) {
         menuToggle.addEventListener('click', function() {
             nav.classList.toggle('active');
-            menuToggle.classList.toggle('active');
+            menuToggle.querySelector('i').classList.toggle('fa-bars');
+            menuToggle.querySelector('i').classList.toggle('fa-times');
         });
     }
-    
-    // Close menu when clicking outside
-    document.addEventListener('click', function(event) {
-        if (!event.target.closest('nav') && !event.target.closest('.menu-toggle') && nav.classList.contains('active')) {
-            nav.classList.remove('active');
-            menuToggle.classList.remove('active');
-        }
-    });
     
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
             
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
+            if (this.getAttribute('href') === '#') return;
             
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
                 // Close mobile menu if open
                 if (nav.classList.contains('active')) {
                     nav.classList.remove('active');
-                    menuToggle.classList.remove('active');
+                    menuToggle.querySelector('i').classList.add('fa-bars');
+                    menuToggle.querySelector('i').classList.remove('fa-times');
                 }
                 
-                // Scroll to target
                 window.scrollTo({
-                    top: targetElement.offsetTop - 80, // Adjust for header height
+                    top: target.offsetTop - 80,
                     behavior: 'smooth'
                 });
             }
         });
     });
     
-    // Add active class to nav items based on scroll position
-    const sections = document.querySelectorAll('section[id]');
-    
-    function highlightNavItem() {
-        const scrollPosition = window.scrollY + 100;
+    // Add active class to nav items on scroll
+    window.addEventListener('scroll', function() {
+        const scrollPosition = window.scrollY;
         
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            const sectionId = section.getAttribute('id');
+        // Add/remove header shadow based on scroll position
+        const header = document.querySelector('header');
+        if (scrollPosition > 50) {
+            header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+        } else {
+            header.style.boxShadow = 'none';
+        }
+        
+        // Only run on home page
+        if (document.querySelector('#home')) {
+            document.querySelectorAll('section[id]').forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    document.querySelector(`nav ul li a[href="#${sectionId}"]`).classList.add('active');
+                } else {
+                    document.querySelector(`nav ul li a[href="#${sectionId}"]`).classList.remove('active');
+                }
+            });
+        }
+    });
+    
+    // Animation on scroll (simple implementation)
+    const animateOnScroll = function() {
+        const elements = document.querySelectorAll('.feature-card, .hero-content, .hero-image, .about-content');
+        
+        elements.forEach(element => {
+            const elementPosition = element.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
             
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                document.querySelector('nav ul li a[href="#' + sectionId + '"]')?.classList.add('active');
-            } else {
-                document.querySelector('nav ul li a[href="#' + sectionId + '"]')?.classList.remove('active');
+            if (elementPosition < windowHeight - 100) {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
             }
         });
-    }
+    };
     
-    window.addEventListener('scroll', highlightNavItem);
+    // Set initial styles for animation
+    document.querySelectorAll('.feature-card, .about-content').forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(30px)';
+        element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    });
     
-    // Header scroll effect
-    const header = document.querySelector('header');
+    document.querySelector('.hero-content').style.opacity = '0';
+    document.querySelector('.hero-content').style.transform = 'translateY(30px)';
+    document.querySelector('.hero-content').style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     
-    function headerScrollEffect() {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    }
+    document.querySelector('.hero-image').style.opacity = '0';
+    document.querySelector('.hero-image').style.transform = 'translateY(30px)';
+    document.querySelector('.hero-image').style.transition = 'opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s';
     
-    window.addEventListener('scroll', headerScrollEffect);
-    
-    // Initialize
-    headerScrollEffect();
-    highlightNavItem();
+    // Run animation on load and scroll
+    window.addEventListener('load', animateOnScroll);
+    window.addEventListener('scroll', animateOnScroll);
 });

@@ -3,9 +3,376 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GelagleAI - Intelligent Document Chat</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>ገላግሌAI - Intelligent AI Assistant</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Ethiopic:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #00b894;
+            --secondary-color: #00b894;
+            --accent-color: #55efc4;
+            --dark-color: #2d3436;
+            --light-color: #f8f9fa;
+            --text-color: #2d3436;
+            --light-text: #fff;
+            --border-radius: 8px;
+            --box-shadow: 0 10px 30px rgba(0, 184, 148, 0.1);
+            --transition: all 0.3s ease;
+            --gradient-start: #009245;
+            --gradient-middle: #FCEE21;
+            --gradient-end: #ED1C24;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', 'Noto Sans Ethiopic', sans-serif;
+            line-height: 1.4;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            overflow-x: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        img {
+            max-width: 100%;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-middle), var(--gradient-end));
+            box-shadow: var(--box-shadow);
+            padding: 10px 0;
+        }
+        
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--light-text);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+        
+        .logo span {
+            color: var(--light-text);
+        }
+        
+        nav ul {
+            display: flex;
+        }
+        
+        nav ul li {
+            margin-left: 15px;
+        }
+        
+        nav ul li a {
+            color: var(--light-text);
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: var(--border-radius);
+            font-size: 0.9rem;
+        }
+        
+        nav ul li a:hover {
+            color: var(--light-text);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--light-text);
+        }
+        
+        /* Main Content */
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Hero Section */
+        .hero {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .hero .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .hero-content {
+            flex: 0.9;
+            padding-right: 20px;
+        }
+        
+        .ai-badge {
+            display: inline-block;
+            background-color: rgba(0, 146, 69, 0.1);
+            color: var(--primary-color);
+            padding: 5px 12px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        .hero-content h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+        
+        .hero-content .highlight {
+            color: var(--primary-color);
+        }
+        
+        .hero-content p {
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .hero-image {
+            flex: 1.1;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .hero-image img {
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            border: 5px solid white;
+        }
+        
+        /* Features */
+        .features {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .feature-card {
+            flex: 1;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .feature-icon {
+            font-size: 1.2rem;
+            color: var(--light-text);
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-middle), var(--gradient-end));
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-family: 'Nyala', 'Poppins', sans-serif;
+            letter-spacing: 0.02em;
+        }
+        
+        .feature-card p {
+            font-size: 0.85rem;
+            color: #666;
+            font-family: 'Nyala', 'Poppins', sans-serif;
+            line-height: 1.4;
+        }
+        
+        /* Download */
+        .download {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+        
+        .download h2 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .download-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .download-btn {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            color: var(--dark-color);
+            padding: 8px 15px;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .download-btn i {
+            font-size: 1.5rem;
+            margin-right: 8px;
+        }
+        
+        .download-btn span {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .download-btn small {
+            font-size: 0.6rem;
+        }
+        
+        .download-btn strong {
+            font-size: 0.9rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: #fff;
+            padding: 10px 0;
+            font-size: 0.8rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: #fff;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            color: rgba(255, 255, 255, 0.7);
+            transform: translateY(-3px);
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-content {
+                padding-right: 0;
+                margin-bottom: 20px;
+            }
+            
+            .features {
+                flex-wrap: wrap;
+            }
+            
+            .feature-card {
+                flex: 1 0 45%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 60px;
+                left: -100%;
+                width: 100%;
+                background-color: #fff;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                transition: var(--transition);
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 10px 0;
+            }
+            
+            nav ul li {
+                margin: 0;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 10px;
+                text-align: center;
+            }
+            
+            .feature-card {
+                flex: 1 0 100%;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -15,11 +382,10 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#download">Download</a></li>
-                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="#home">መነሻ</a></li>
+                    <li><a href="#features">ባህሪያት</a></li>
+                    <li><a href="privacy-policy.html">ግላዊነት</a></li>
+                    <li><a href="contact.html">አግኙን</a></li>
                 </ul>
             </nav>
             <div class="menu-toggle">
@@ -28,123 +394,102 @@
         </div>
     </header>
 
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Intelligent Document Chat</h1>
-                <p>Experience an intelligent system powered by advanced AI technology</p>
-                <div class="cta-buttons">
-                    <a href="#download" class="btn btn-primary">Download App</a>
-                    <a href="#features" class="btn btn-secondary">Learn More</a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <img src="images/app-mockup.png" alt="GelagleAI App Mockup">
-            </div>
-        </div>
-    </section>
-
-    <section id="features" class="features">
-        <div class="container">
-            <h2 class="section-title">Key Features</h2>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-comments"></i>
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <span class="ai-badge" style="font-family: 'Noto Sans Ethiopic', sans-serif;">የሰው ሰራሽ አስተውሎት አጋዥ</span>
+                    <h1>ኮሚፒውተር <span class="highlight" style="font-family: 'Noto Sans Ethiopic', sans-serif;">እንደገና ተፈጠረ</span></h1>
+                    <p style="font-family: 'Noto Sans Ethiopic', sans-serif; font-size: 1.05rem; line-height: 1.5;">በዘመናዊ የሰው ሰራሽ አስተውሎት አጋዥ በመጠቀም መረጃ የማግኘት መንገድዎን ይቀይሩ።</p>
+                    
+                    <div class="features">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <h3 style="font-family: 'Noto Sans Ethiopic', sans-serif; font-size: 1.1rem; letter-spacing: 0.01em;">የላቀ ሰው ሰራሽ አስተውሎት</h3>
+                            <p style="font-family: 'Noto Sans Ethiopic', sans-serif; font-size: 0.9rem;">ትክክለኛ፣ አውድ ላይ የተመሰረተ ምላሽ</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h3 style="font-family: 'Noto Sans Ethiopic', sans-serif; font-size: 1.1rem; letter-spacing: 0.01em;">ተፈጥሯዊ ንግግር</h3>
+                            <p style="font-family: 'Noto Sans Ethiopic', sans-serif; font-size: 0.9rem;">ቀላል የጽሁፍ ግንኙነት</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3 style="font-family: 'Noto Sans Ethiopic', sans-serif; font-size: 1.1rem; letter-spacing: 0.01em;">ግላዊነት በቅድሚያ</h3>
+                            <p style="font-family: 'Noto Sans Ethiopic', sans-serif; font-size: 0.9rem;">ምንም ዳታ አይሰበስብም</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-language"></i>
+                            </div>
+                            <h3 style="font-family: 'Noto Sans Ethiopic', sans-serif; font-size: 1.1rem; letter-spacing: 0.01em;">ባለብዙ ቋንቋ</h3>
+                            <p style="font-family: 'Noto Sans Ethiopic', sans-serif; font-size: 0.9rem;">English, አማርኛ, ኦሮምኛ</p>
+                        </div>
                     </div>
-                    <h3>Natural Conversations</h3>
-                    <p>Engage with an intelligent system using natural language queries and receive smart responses.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-file-alt"></i>
+                    
+                    <div class="download">
+                        <h2 style="font-family: 'Noto Sans Ethiopic', sans-serif; font-size: 1.3rem; font-weight: 600;">ገላግሌAI ዛሬውኑ ይሞክሩ</h2>
+                        <div class="download-buttons">
+                            <a href="#" class="download-btn">
+                                <i class="fab fa-apple"></i>
+                                <span>
+                                    <small style="font-family: 'Noto Sans Ethiopic', sans-serif;">ከዚህ ላይ ያውርዱ</small>
+                                    <strong>App Store</strong>
+                                </span>
+                            </a>
+                            <a href="#" class="download-btn">
+                                <i class="fab fa-google-play"></i>
+                                <span>
+                                    <small style="font-family: 'Noto Sans Ethiopic', sans-serif;">ከዚህ ላይ ያውርዱ</small>
+                                    <strong>Google Play</strong>
+                                </span>
+                            </a>
+                        </div>
                     </div>
-                    <h3>Multiple Document Types</h3>
-                    <p>Support for PDFs, Word documents, text files, and more.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <h3>Privacy Focused</h3>
-                    <p>All data stays on your device. We don't collect or store any information.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h3>Fast Processing</h3>
-                    <p>Get answers quickly with our optimized AI processing engine.</p>
+                <div class="hero-image">
+                    <img src="images/app screenshot.png" alt="GelagleAI App Screenshot">
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section id="about" class="about">
-        <div class="container">
-            <div class="about-content">
-                <h2 class="section-title">About ገላግሌAI</h2>
-                <p>ገላግሌAI is a cutting-edge mobile application that provides an intelligent conversational interface for document analysis. Our technology combines advanced AI with document processing to provide a seamless experience.</p>
-                <p>Our mission is to make information retrieval as simple as having a conversation, while maintaining the highest standards of privacy and security.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="download" class="download">
-        <div class="container">
-            <h2 class="section-title">Download the App</h2>
-            <p>Experience the power of document chat on your mobile device</p>
-            <div class="download-buttons">
-                <a href="#" class="download-btn">
-                    <i class="fab fa-apple"></i>
-                    <span>
-                        <small>Download on the</small>
-                        <strong>App Store</strong>
-                    </span>
-                </a>
-                <a href="#" class="download-btn">
-                    <i class="fab fa-google-play"></i>
-                    <span>
-                        <small>Get it on</small>
-                        <strong>Google Play</strong>
-                    </span>
-                </a>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <h2>ገላግሌ<span>AI</span></h2>
+                <p>&copy; 2025 ገላግሌAI. መብቱ በህግ የተጠበቀ ነው። <a href="privacy-policy.html">የግላዊነት ፖሊሲ</a></p>
+                <div class="social-links">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Threads"><i class="fa-brands fa-threads"></i></a>
+                    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                 </div>
-                <div class="footer-links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <div class="footer-contact">
-                    <h3>Contact Us</h3>
-                    <p>Email: info@gelagleai.com</p>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 GelagleAI. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const menuToggle = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('nav');
+            
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function() {
+                    nav.classList.toggle('active');
+                    menuToggle.querySelector('i').classList.toggle('fa-bars');
+                    menuToggle.querySelector('i').classList.toggle('fa-times');
+                });
+            }
+        });
+    </script>
 </body>
 </html>
