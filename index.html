@@ -491,6 +491,18 @@
                     menuToggle.querySelector('i').classList.toggle('fa-times');
                 });
             }
+            
+            // Close menu when a menu item is clicked
+            const menuItems = document.querySelectorAll('nav ul li a');
+            menuItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    if (nav.classList.contains('active')) {
+                        nav.classList.remove('active');
+                        menuToggle.querySelector('i').classList.add('fa-bars');
+                        menuToggle.querySelector('i').classList.remove('fa-times');
+                    }
+                });
+            });
         });
     </script>
 </body>
