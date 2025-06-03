@@ -11,6 +11,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Close menu when a menu item is clicked
+    const menuItems = document.querySelectorAll('nav ul li a');
+    menuItems.forEach(item => {
+        item.addEventListener('click', function() {
+            if (nav.classList.contains('active')) {
+                nav.classList.remove('active');
+                menuToggle.querySelector('i').classList.add('fa-bars');
+                menuToggle.querySelector('i').classList.remove('fa-times');
+            }
+        });
+    });
+    
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {

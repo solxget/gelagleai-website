@@ -209,6 +209,7 @@
                 background-color: #fff;
                 box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
                 transition: var(--transition);
+                z-index: 100;
             }
             
             nav.active {
@@ -228,6 +229,7 @@
                 display: block;
                 padding: 10px;
                 text-align: center;
+                color: var(--dark-color);
             }
             
             .footer-content {
@@ -355,6 +357,18 @@
                     menuToggle.querySelector('i').classList.toggle('fa-times');
                 });
             }
+            
+            // Close menu when a menu item is clicked
+            const menuItems = document.querySelectorAll('nav ul li a');
+            menuItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    if (nav.classList.contains('active')) {
+                        nav.classList.remove('active');
+                        menuToggle.querySelector('i').classList.add('fa-bars');
+                        menuToggle.querySelector('i').classList.remove('fa-times');
+                    }
+                });
+            });
         });
     </script>
 </body>
