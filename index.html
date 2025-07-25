@@ -35,7 +35,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Ethiopic:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Ethiopic:wght@100;200;300;400;500;600;700;800;900&family=Noto+Serif+Ethiopic:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://gelagleai.com/">
@@ -55,6 +55,12 @@
             --gradient-start: #009245;
             --gradient-middle: #FCEE21;
             --gradient-end: #ED1C24;
+            
+            /* Font stacks for better typography */
+            --font-latin: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-amharic-display: 'Noto Serif Ethiopic', 'Noto Sans Ethiopic', 'Nyala', 'Ethiopia Jiret', 'Abyssinica SIL', serif;
+            --font-amharic-body: 'Noto Sans Ethiopic', 'Nyala', 'Ethiopia Jiret', 'Abyssinica SIL', sans-serif;
+            --font-amharic-ui: 'Noto Sans Ethiopic', 'Nyala', 'Ethiopia Jiret', sans-serif;
         }
         
         * {
@@ -64,7 +70,7 @@
         }
         
         body {
-            font-family: 'Poppins', 'Noto Sans Ethiopic', sans-serif;
+            font-family: var(--font-latin);
             line-height: 1.4;
             color: var(--text-color);
             background-color: var(--light-color);
@@ -529,6 +535,130 @@
             margin-top: 20px;
         }
         
+        /* Amharic Typography Classes */
+        .amharic-display {
+            font-family: var(--font-amharic-display);
+            font-weight: 500;
+            letter-spacing: 0.01em;
+            line-height: 1.4;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .amharic-body {
+            font-family: var(--font-amharic-body);
+            font-weight: 400;
+            letter-spacing: 0.005em;
+            line-height: 1.6;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .amharic-ui {
+            font-family: var(--font-amharic-ui);
+            font-weight: 500;
+            letter-spacing: 0.01em;
+            line-height: 1.3;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .amharic-heading {
+            font-family: var(--font-amharic-display);
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            line-height: 1.2;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Enhanced typography for better readability */
+        .amharic-text {
+            font-family: var(--font-amharic-body);
+            font-weight: 400;
+            line-height: 1.7;
+            letter-spacing: 0.01em;
+            word-spacing: 0.05em;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .amharic-text strong {
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+        
+        .amharic-text .highlight {
+            background: linear-gradient(120deg, rgba(0, 184, 148, 0.1) 0%, rgba(0, 184, 148, 0.2) 100%);
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+        
+        /* Improved tagline styling */
+        .tagline {
+            font-family: var(--font-amharic-display);
+            font-weight: 600;
+            font-size: 1.1em;
+            color: var(--primary-color);
+            text-align: center;
+            margin-top: 15px;
+            padding: 10px;
+            background: linear-gradient(120deg, rgba(0, 184, 148, 0.05) 0%, rgba(0, 184, 148, 0.1) 100%);
+            border-radius: 8px;
+            border-left: 3px solid var(--primary-color);
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Improved bullet points styling */
+        .amharic-text br + br {
+            line-height: 2;
+        }
+        
+        /* Better spacing for Ethiopian text */
+        .amharic-display,
+        .amharic-body,
+        .amharic-ui,
+        .amharic-heading,
+        .amharic-text {
+            font-feature-settings: "kern" 1, "liga" 1;
+            font-variant-ligatures: common-ligatures;
+        }
+        
+        /* Responsive font sizes for Amharic text */
+        @media (max-width: 768px) {
+            .amharic-display {
+                font-size: 0.95em;
+            }
+            
+            .amharic-heading {
+                font-size: 0.9em;
+            }
+            
+            .amharic-body {
+                font-size: 0.9em;
+                line-height: 1.6;
+            }
+            
+            .amharic-text {
+                font-size: 0.9em;
+                line-height: 1.6;
+            }
+            
+            .tagline {
+                font-size: 1em;
+                padding: 8px;
+            }
+        }
+        
+        /* Feature card font improvements */
         .feature-card {
             flex: 1;
             background-color: #fff;
@@ -556,14 +686,12 @@
             font-size: 1rem;
             margin-bottom: 5px;
             font-weight: 600;
-            font-family: 'Nyala', 'Poppins', sans-serif;
             letter-spacing: 0.02em;
         }
         
         .feature-card p {
             font-size: 0.85rem;
             color: #666;
-            font-family: 'Nyala', 'Poppins', sans-serif;
             line-height: 1.4;
         }
         
@@ -781,28 +909,39 @@
                 <div class="company-description">
                     <div class="description-header">
                         <i class="fas fa-lightbulb"></i>
-                        <h3 style="font-family: 'Noto Sans Ethiopic', sans-serif;">የገላግሌAI መፍትሄ</h3>
+                        <h3 class="amharic-heading">የገላግሌAI መፍትሄ</h3>
                     </div>
-                    <p style="font-family: 'Noto Sans Ethiopic', sans-serif; line-height: 1.6; margin-bottom: 15px;">
+                    <p class="amharic-text" style="line-height: 1.6; margin-bottom: 15px;">
                         <strong>ጉዳይወን ለማስፈጸም ቢሮ መመላለሰ እና መጉላላት ስልችቶወታል? ግዜወን፣ ገንዘብወን ማባከን፣ በደላላ መበዝበዝ እና ጉቦ መክፈል አስመርሮወታል?</strong>
                     </p>
-                    <p style="font-family: 'Noto Sans Ethiopic', sans-serif; line-height: 1.6;">
-                        አወ ከሆነ መልስወ፤ <span class="highlight-text" style="color: var(--primary-color); font-weight: 600;">የምስራች ገልግሌ AI</span> የሰው ሰራሽ አስተውሎት መተግበርያ እነዚህን እና ሌሎች ችግሮችን ቤትወ ሁነው መፍታት የሚያስችል መፍትሄ ይዞለት መጥቷል። <span class="highlight-badge" style="background-color: rgba(0, 184, 148, 0.1); padding: 2px 5px; border-radius: 3px;">ያውም በነጻ!</span> ጉዳይወን ለማስፈጸም የሚመለከተውን ቢሮ፣ የሚያስፈለጉትን ሰነዶች እና ሌሎች ዝርዝሮች አስቀድመው ይወቁ። በአማርኛ፣ በኦሮምኛ እና በእንግሊዝኛ ቋንቋዎች ለሚጠይቁት ጥያቄዎች በጹህፍም ሆነ በድምጽ መግባባት የሚችል ከዘመኑ የቀደም የሰው ሰራሽ አስተውሎት አቅርበንልወታልን።
+                    <p class="amharic-text" style="text-align: left !important;">
+                        አዎን ከሆነ መልስዎ፤ የምስራች አለን <span class="highlight">ገላግሌ AI</span> የሰው ሰራሽ አስተውሎት መተግበርያ እነዚህን እና ሌሎች
+                        ችግሮችወን ቤትወ ሁነው መፍታት የሚያስችል መፍትሄ ይዞለት መጥቷል።
+                        <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;• ወደ ቢሮ ሳይሄዱ የሚያስፈልጉትን ሰነዶች እና መስፈርቶች በቅድሚያ ይወቁ።
+                        <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;• በአማርኛ፣ ኦሮምኛ እና እንግሊዝኛ መግባባት የሚችል::
+                        <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;• በድምጽ ወይም በጽሁፍ ጥያቄዎን ያቀርቡ:: ገላግሌ AI መልስ ይሰጣል።
+                        <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;• ጉዳዮን በአንዴ ያጠናቁ! ጊዜና ገንዘብወን ይቆጥቡ! መጉላላትን መበዝበዝን ያስወግዱ!
+                        <br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp; <span class="highlight">💡ያውም በነጻ።</span>
                     </p>
                     <div class="cta-buttons">
                         <div class="button-group">
                             <a href="https://apps.apple.com/us/app/gelaglaai/id6745857739" target="_blank" class="store-button apple-button">
                                 <i class="fab fa-apple"></i>
                                 <div class="button-text">
-                                    <small style="font-family: 'Noto Sans Ethiopic', sans-serif; font-size: 0.7rem; display: block; opacity: 0.9;">ከዚህ ላይ ያውርዱ</small>
-                                    <span style="font-family: 'Noto Sans Ethiopic', sans-serif;">App Store</span>
+                                    <small class="amharic-ui" style="font-size: 0.7rem; display: block; opacity: 0.9;">ከዚህ ላይ ያውርዱ</small>
+                                    <span class="amharic-ui">App Store</span>
                                 </div>
                             </a>
                             <a href="https://play.google.com/store/apps/details?id=com.yourcompany.gelagayaichat&pcampaignid=web_share" target="_blank" class="store-button google-button">
                                 <i class="fab fa-google-play"></i>
                                 <div class="button-text">
-                                    <small style="font-family: 'Noto Sans Ethiopic', sans-serif; font-size: 0.7rem; display: block; opacity: 0.9;">ከዚህ ላይ ያውርዱ</small>
-                                    <span style="font-family: 'Noto Sans Ethiopic', sans-serif;">Google Play</span>
+                                    <small class="amharic-ui" style="font-size: 0.7rem; display: block; opacity: 0.9;">ከዚህ ላይ ያውርዱ</small>
+                                    <span class="amharic-ui">Google Play</span>
                                 </div>
                             </a>
                         </div>
@@ -814,62 +953,62 @@
         <section id="home" class="hero">
             <div class="container">
                 <div class="hero-content">
-                    <span class="ai-badge" style="font-family: 'Noto Sans Ethiopic', sans-serif;">የሰው ሰራሽ አስተውሎት አጋዥ</span>
-                    <h1>ኮምፒዩተር <span class="highlight" style="font-family: 'Noto Sans Ethiopic', sans-serif;">እንደገና ተፈጠረ</span></h1>
-                    <p style="font-family: 'Noto Sans Ethiopic', sans-serif; font-size: 1.05rem; line-height: 1.5;">በዘመናዊ የሰው ሰራሽ አስተውሎት አጋዥ በመጠቀም መረጃ የማግኘት መንገድዎን ይቀይሩ።</p>
+                    <span class="ai-badge amharic-ui">የሰው ሰራሽ አስተውሎት አጋዥ</span>
+                    <h1>ኮምፒዩተር <span class="highlight amharic-display">እንደገና ተፈጠረ</span></h1>
+                    <p class="amharic-body" style="font-size: 1.05rem; line-height: 1.5;">በዘመናዊ የሰው ሰራሽ አስተውሎት አጋዥ በመጠቀም መረጃ የማግኘት መንገድዎን ይቀይሩ።</p>
                     
                     <div class="features">
                         <div class="feature-card">
                             <div class="feature-icon">
                                 <i class="fas fa-robot"></i>
                             </div>
-                            <h3 style="font-family: 'Noto Sans Ethiopic', sans-serif; font-size: 1.1rem; letter-spacing: 0.01em;">የላቀ ሰው ሰራሽ አስተውሎት</h3>
-                            <p style="font-family: 'Noto Sans Ethiopic', sans-serif; font-size: 0.9rem;">ትክክለኛ፣ አውድ ላይ የተመሰረተ ምላሽ</p>
+                            <h3 class="amharic-heading" style="font-size: 1.1rem; letter-spacing: 0.01em;">የላቀ ሰው ሰራሽ አስተውሎት</h3>
+                            <p class="amharic-body" style="font-size: 0.9rem;">ትክክለኛ፣ አውድ ላይ የተመሰረተ ምላሽ</p>
                         </div>
                         <div class="feature-card">
                             <div class="feature-icon">
                                 <i class="fas fa-comments"></i>
                             </div>
-                            <h3 style="font-family: 'Noto Sans Ethiopic', sans-serif; font-size: 1.1rem; letter-spacing: 0.01em;">ተፈጥሯዊ ንግግር</h3>
-                            <p style="font-family: 'Noto Sans Ethiopic', sans-serif; font-size: 0.9rem;">ቀላል የጽሁፍ ግንኙነት</p>
+                            <h3 class="amharic-heading" style="font-size: 1.1rem; letter-spacing: 0.01em;">ተፈጥሯዊ ንግግር</h3>
+                            <p class="amharic-body" style="font-size: 0.9rem;">ቀላል የጽሁፍ ግንኙነት</p>
                         </div>
                         <div class="feature-card">
                             <div class="feature-icon">
                                 <i class="fas fa-microphone"></i>
                             </div>
-                            <h3 style="font-family: 'Noto Sans Ethiopic', sans-serif; font-size: 1.1rem; letter-spacing: 0.01em;">የድምፅ ፍለጋ</h3>
-                            <p style="font-family: 'Noto Sans Ethiopic', sans-serif; font-size: 0.9rem;">በድምፅዎ ይጠይቁ</p>
+                            <h3 class="amharic-heading" style="font-size: 1.1rem; letter-spacing: 0.01em;">የድምፅ ፍለጋ</h3>
+                            <p class="amharic-body" style="font-size: 0.9rem;">በድምፅዎ ይጠይቁ</p>
                         </div>
                         <div class="feature-card">
                             <div class="feature-icon">
                                 <i class="fas fa-shield-alt"></i>
                             </div>
-                            <h3 style="font-family: 'Noto Sans Ethiopic', sans-serif; font-size: 1.1rem; letter-spacing: 0.01em;">ግላዊነት በቅድሚያ</h3>
-                            <p style="font-family: 'Noto Sans Ethiopic', sans-serif; font-size: 0.9rem;">ምንም ዳታ አይሰበስብም</p>
+                            <h3 class="amharic-heading" style="font-size: 1.1rem; letter-spacing: 0.01em;">ግላዊነት በቅድሚያ</h3>
+                            <p class="amharic-body" style="font-size: 0.9rem;">ምንም ዳታ አይሰበስብም</p>
                         </div>
                         <div class="feature-card">
                             <div class="feature-icon">
                                 <i class="fas fa-language"></i>
                             </div>
-                            <h3 style="font-family: 'Noto Sans Ethiopic', sans-serif; font-size: 1.1rem; letter-spacing: 0.01em;">ባለብዙ ቋንቋ</h3>
-                            <p style="font-family: 'Noto Sans Ethiopic', sans-serif; font-size: 0.9rem;">English, አማርኛ, ኦሮምኛ</p>
+                            <h3 class="amharic-heading" style="font-size: 1.1rem; letter-spacing: 0.01em;">ባለብዙ ቋንቋ</h3>
+                            <p class="amharic-body" style="font-size: 0.9rem;">English, አማርኛ, ኦሮምኛ</p>
                         </div>
                     </div>
                     
                     <div class="download" id="download">
-                        <h2 style="font-family: 'Noto Sans Ethiopic', sans-serif; font-size: 1.3rem; font-weight: 600;">ገላግሌAI ዛሬውኑ ይሞክሩ</h2>
+                        <h2 class="amharic-heading" style="font-size: 1.3rem; font-weight: 600;">ገላግሌAI ዛሬውኑ ይሞክሩ</h2>
                         <div class="download-buttons">
                             <a href="https://apps.apple.com/us/app/gelaglaai/id6745857739" class="download-btn">
                                 <i class="fab fa-apple"></i>
                                 <span>
-                                    <small style="font-family: 'Noto Sans Ethiopic', sans-serif;">ከዚህ ላይ ያውርዱ</small>
+                                    <small class="amharic-ui">ከዚህ ላይ ያውርዱ</small>
                                     <strong>App Store</strong>
                                 </span>
                             </a>
                             <a href="https://play.google.com/store/apps/details?id=com.yourcompany.gelagayaichat&pcampaignid=web_share" class="download-btn">
                                 <i class="fab fa-google-play"></i>
                                 <span>
-                                    <small style="font-family: 'Noto Sans Ethiopic', sans-serif;">ከዚህ ላይ ያውርዱ</small>
+                                    <small class="amharic-ui">ከዚህ ላይ ያውርዱ</small>
                                     <strong>Google Play</strong>
                                 </span>
                             </a>
