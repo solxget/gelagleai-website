@@ -632,6 +632,15 @@
             font-variant-ligatures: common-ligatures;
         }
         
+        /* Desktop/Mobile content visibility */
+        .desktop-content {
+            display: block;
+        }
+        
+        .mobile-content {
+            display: none;
+        }
+        
         /* Responsive font sizes for Amharic text */
         @media (max-width: 768px) {
             .amharic-display {
@@ -864,6 +873,85 @@
                 font-size: 1.05rem !important;
             }
             
+            /* Mobile-specific improvements for content list */
+            .full-width-description .amharic-text {
+                padding: 0 20px !important;
+                line-height: 1.8 !important;
+            }
+            
+            /* Better bullet point styling for mobile */
+            .full-width-description .amharic-text br {
+                line-height: 2.2;
+            }
+            
+            /* Show mobile content, hide desktop content */
+            .desktop-content {
+                display: none !important;
+            }
+            
+            .mobile-content {
+                display: block !important;
+            }
+            
+            /* Mobile bullet point improvements */
+            .mobile-bullet-list {
+                margin: 20px 0;
+                padding: 0;
+            }
+            
+            .mobile-bullet-item {
+                display: flex;
+                align-items: flex-start;
+                margin-bottom: 15px;
+                padding: 12px 15px;
+                background: rgba(0, 184, 148, 0.05);
+                border-radius: 8px;
+                border-left: 3px solid var(--primary-color);
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            }
+            
+            .mobile-bullet-icon {
+                color: var(--primary-color);
+                font-size: 1.1rem;
+                margin-right: 12px;
+                margin-top: 2px;
+                flex-shrink: 0;
+            }
+            
+            .mobile-bullet-text {
+                font-family: var(--font-amharic-body);
+                font-size: 0.9rem;
+                line-height: 1.5;
+                color: #333;
+                flex: 1;
+            }
+            
+            /* Mobile highlight styling */
+            .full-width-description .amharic-text .highlight {
+                display: inline-block;
+                background: linear-gradient(120deg, rgba(0, 184, 148, 0.15) 0%, rgba(0, 184, 148, 0.25) 100%);
+                padding: 3px 6px;
+                border-radius: 4px;
+                font-weight: 600;
+                margin: 0 2px;
+            }
+            
+            /* Mobile free badge styling */
+            .mobile-free-badge {
+                display: inline-block;
+                background: linear-gradient(135deg, var(--primary-color), #00a085);
+                color: white;
+                padding: 8px 15px;
+                border-radius: 20px;
+                font-weight: 600;
+                font-size: 0.9rem;
+                margin: 15px 0;
+                box-shadow: 0 3px 10px rgba(0, 184, 148, 0.3);
+                text-align: center;
+                width: 100%;
+                font-family: var(--font-amharic-body);
+            }
+            
             .button-group {
                 gap: 10px;
             }
@@ -917,17 +1005,47 @@
                     <p class="amharic-text" style="text-align: left !important;">
                         አዎን ከሆነ መልስዎ፤ የምስራች አለን <span class="highlight">ገላግሌ AI</span> የሰው ሰራሽ አስተውሎት መተግበርያ እነዚህን እና ሌሎች
                         ችግሮችወን ቤትወ ሁነው መፍታት የሚያስችል መፍትሄ ይዞለት መጥቷል።
-                        <br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;• ወደ ቢሮ ሳይሄዱ የሚያስፈልጉትን ሰነዶች እና መስፈርቶች በቅድሚያ ይወቁ።
-                        <br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;• በአማርኛ፣ ኦሮምኛ እና እንግሊዝኛ መግባባት የሚችል::
-                        <br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;• በድምጽ ወይም በጽሁፍ ጥያቄዎን ያቀርቡ:: ገላግሌ AI መልስ ይሰጣል።
-                        <br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;• ጉዳዮን በአንዴ ያጠናቁ! ጊዜና ገንዘብወን ይቆጥቡ! መጉላላትን መበዝበዝን ያስወግዱ!
-                        <br><br>
-                        &nbsp;&nbsp;&nbsp;&nbsp; <span class="highlight">💡ያውም በነጻ።</span>
                     </p>
+                    
+                    <!-- Desktop version (hidden on mobile) -->
+                    <div class="desktop-content" style="display: block;">
+                        <p class="amharic-text" style="text-align: left !important; margin-top: 20px;">
+                            &nbsp;&nbsp;&nbsp;&nbsp;• ወደ ቢሮ ሳይሄዱ የሚያስፈልጉትን ሰነዶች እና መስፈርቶች በቅድሚያ ይወቁ።
+                            <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;• በአማርኛ፣ ኦሮምኛ እና እንግሊዝኛ መግባባት የሚችል::
+                            <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;• በድምጽ ወይም በጽሁፍ ጥያቄዎን ያቀርቡ:: ገላግሌ AI መልስ ይሰጣል።
+                            <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;• ጉዳዮን በአንዴ ያጠናቁ! ጊዜና ገንዘብወን ይቆጥቡ! መጉላላትን መበዝበዝን ያስወግዱ!
+                            <br><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp; <span class="highlight">💡ያውም በነጻ።</span>
+                        </p>
+                    </div>
+                    
+                    <!-- Mobile version (hidden on desktop) -->
+                    <div class="mobile-content" style="display: none;">
+                        <div class="mobile-bullet-list">
+                            <div class="mobile-bullet-item">
+                                <div class="mobile-bullet-icon">📋</div>
+                                <div class="mobile-bullet-text">ወደ ቢሮ ሳይሄዱ የሚያስፈልጉትን ሰነዶች እና መስፈርቶች በቅድሚያ ይወቁ።</div>
+                            </div>
+                            <div class="mobile-bullet-item">
+                                <div class="mobile-bullet-icon">🗣️</div>
+                                <div class="mobile-bullet-text">በአማርኛ፣ ኦሮምኛ እና እንግሊዝኛ መግባባት የሚችል::</div>
+                            </div>
+                            <div class="mobile-bullet-item">
+                                <div class="mobile-bullet-icon">🎤</div>
+                                <div class="mobile-bullet-text">በድምጽ ወይም በጽሁፍ ጥያቄዎን ያቀርቡ:: ገላግሌ AI መልስ ይሰጣል።</div>
+                            </div>
+                            <div class="mobile-bullet-item">
+                                <div class="mobile-bullet-icon">⚡</div>
+                                <div class="mobile-bullet-text">ጉዳዮን በአንዴ ያጠናቁ! ጊዜና ገንዘብወን ይቆጥቡ! መጉላላትን መበዝበዝን ያስወግዱ!</div>
+                            </div>
+                        </div>
+                        <div class="mobile-free-badge">
+                            💡 ያውም በነጻ።
+                        </div>
+                    </div>
                     <div class="cta-buttons">
                         <div class="button-group">
                             <a href="https://apps.apple.com/us/app/gelaglaai/id6745857739" target="_blank" class="store-button apple-button">
